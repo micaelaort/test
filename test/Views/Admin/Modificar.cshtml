@@ -1,0 +1,26 @@
+﻿@using test.Models
+@model Usuarios
+@{
+    ViewBag.Title = "Modificar";
+}
+
+
+@using (Html.BeginForm("Modificar", "Admin", FormMethod.Post))
+{
+
+    <div class="form-group" id="contact">
+        <h3>Nombre</h3>
+        @Html.TextBoxFor(model => model.nombre, new { @class = "texto", placeholder = "Ingrese nombre" })
+        <h3>Apellido</h3>
+        @Html.TextBoxFor(model => model.apellido, new { @class = "texto", placeholder = "Ingrese apellido" })
+        <h3>Usuario</h3>
+        @Html.TextBoxFor(model => model.user, new { @class = "texto", placeholder = "Ingrese usuario" })
+        <h3>Email</h3>
+        @Html.TextBoxFor(model => model.email, new { type = "email", @class = "texto", placeholder = "Ingrese email" })
+        <h3>Contraseña</h3>
+        @Html.TextBoxFor(model => model.contraseña, new { type = "password", @class = "texto", placeholder = "Ingrese contraseña" })
+        <h3>Confirmacion de la contraseña</h3>
+        @Html.TextBoxFor(model => model.confirmaciondecontraseña, new { type = "password", @class = "texto", placeholder = "Ingrese la confirmacion de la contraseña" })
+    </div>
+                        <input type="submit" />
+}

@@ -1,0 +1,54 @@
+﻿@using test.Models
+@model Usuarios
+@{
+    ViewBag.Title = "Index";
+}
+<div class="row">
+    <div class="col-lg-6">
+        <h2 id="TituloBanner">Usuarios</h2>
+
+         <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Usuario</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @*
+                        como hacer que aparezca un objeto de una clase en una tabla*@
+
+                    @{foreach (Usuarios user in (ViewBag.lista))
+                        {
+                            <tr class="fila">
+
+                                <td>@user.nombre</td>
+                                <td>@user.apellido</td>
+                                <td>@user.user</td>
+                                <td>@user.email</td>
+
+
+                             
+
+                                <td>
+                                    
+                                    @Html.ActionLink("Modificar", "Modificar", "Admin", new { id = user.id }, null)
+
+                                </td>
+                                <td>
+                                 
+                                    @Html.ActionLink("Eliminar", "Eliminar", "Admin", new { id = user.id }, null)
+
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+    

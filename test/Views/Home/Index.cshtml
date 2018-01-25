@@ -1,0 +1,205 @@
+﻿@using test.Models
+@model Usuarios
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_temp.cshtml";
+}
+
+<body id="page-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">Home</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ml-auto">
+           
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#portfolio">Monedas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#about">Log in</a>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#contact">Registrarse</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Header -->
+    <header class="masthead">
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in">Bienvenidos!</div>
+                <div class="intro-heading text-uppercase">Aquí puedes cotizar tu moneda </div>
+                 @Html.ActionLink("Cotizar", "Cotizar", "Home",null ,new { @class="btn btn-primary btn-xl text-uppercase"})
+            </div>
+        </div>
+    </header>
+
+    <!-- Portfolio Grid -->
+    <section class="bg-light" id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading text-uppercase">Monedas</h2>
+                    <h3 class="section-subheading text-muted">Las divisas con las cuales nos manejamos son</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <p>Dólar</p>
+                            </div>
+                        </div>
+                        <img class="img-fluid" src="@Url.Content("~/Content/temp/")img/portfolio/dolar.jpg" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Dolares</h4>
+                        <p class="text-muted">Estados Unidos</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <p>Pesos argentinos</p>
+                            </div>
+                        </div>
+                        <img class="img-fluid" id="pesos" src="@Url.Content("~/Content/temp/")img/portfolio/pesos.jpg" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Pesos</h4>
+                        <p class="text-muted">Argentina</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <p>Reales</p>
+                            </div>
+                        </div>
+                        <img class="img-fluid" id="reales" src="@Url.Content("~/Content/temp/")img/portfolio/reales.jpg" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Reales</h4>
+                        <p class="text-muted">Brasil</p>
+                    </div>
+
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+    <!-- About -->
+    <section id="about">
+        <div class="container" id="about">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading text-uppercase">Login</h2>
+                    <h3 class="section-subheading text-muted">Ingrese sus datos.</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                    {
+                    
+                        <div class="form-group" id="contact">
+                            <h4>Usuario</h4>
+                            @Html.TextBoxFor(model => model.user, new {  @class = "texto", placeholder = "Ingrese usuario" })
+                            <h4>Contraseña</h4>                           
+                            @Html.TextBoxFor(model => model.contraseña, new { type = "password", @class = "texto", placeholder = "Ingrese contraseña" })
+                           
+                          </div>
+                        <input type="submit" />
+                    }
+                      
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+
+   
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container"  id="contact">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading text-uppercase">Registrese</h2>
+                    <h3 class="section-subheading text-muted">Todos los campos son obligatorios</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                   @using (Html.BeginForm("Registrar", "Home", FormMethod.Post))
+                   {
+                       
+                        <div class="form-group" id="contact">
+                            <h3>Nombre</h3>
+                            @Html.TextBoxFor(model => model.nombre, new { @class = "texto", placeholder = "Ingrese nombre" })
+                            <h3>Apellido</h3>
+                            @Html.TextBoxFor(model => model.apellido, new { @class = "texto", placeholder = "Ingrese apellido" })
+                            <h3>Usuario</h3>
+                            @Html.TextBoxFor(model => model.user, new { @class = "texto", placeholder = "Ingrese usuario" })
+                            <h3>Email</h3>
+                            @Html.TextBoxFor(model => model.email, new { type = "email", @class = "texto", placeholder = "Ingrese email" })
+                            <h3>Contraseña</h3>
+                            @Html.TextBoxFor(model => model.contraseña, new { type = "password", @class = "texto", placeholder = "Ingrese contraseña" })
+                            <h3>Confirmacion de la contraseña</h3>
+                            @Html.TextBoxFor(model => model.confirmaciondecontraseña, new { type = "password", @class = "texto", placeholder = "Ingrese la confirmacion de la contraseña" })
+                          </div>
+                        <input type="submit" />
+                    }
+                 
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Bootstrap core JavaScript -->
+    <script src="@Url.Content("~/Content/temp/")vendor/jquery/jquery.min.js"></script>
+    <script src="@Url.Content("~/Content/temp/")vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Plugin JavaScript -->
+    <script src="@Url.Content("~/Content/temp/")vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Contact form JavaScript -->
+    <script src="@Url.Content("~/Content/temp/")js/jqBootstrapValidation.js"></script>
+    <script src="@Url.Content("~/Content/temp/")js/contact_me.js"></script>
+    <!-- Custom scripts for this template -->
+    <script src="@Url.Content("~/Content/temp/")js/agency.min.js"></script>
+    <script src="@Url.Content("~/Content/temp/")js/agency.js"></script>
+     <script>
+    $(function(){
+       if("@ViewBag.ValidationFailed"==="Yes")
+       {
+         // get the contact div's top position and use that as the scrollTop value.
+          // $(window).scrollTop($("#contact").position().top);
+           $('#contact')[0].scrollIntoView(true);
+
+       }
+    });
+    </script>
+    <script>
+    $(function(){
+       if("@ViewBag.ValidationFailedLogin"==="Yes")
+       {
+         // get the contact div's top position and use that as the scrollTop value.
+          // $(window).scrollTop($("#contact").position().top);
+           $('#about')[0].scrollIntoView(true);
+
+       }
+    });
+    </script>
+   
+</body>
